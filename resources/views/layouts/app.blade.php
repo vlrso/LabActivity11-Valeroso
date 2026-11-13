@@ -24,12 +24,16 @@
 
                     @if ($myAuthor)
                         <a href="{{ route('posts.create') }}" class="hover:underline">New post</a>
-                        <a href="{{ route('authors.show', $myAuthor) }}" class="underline">
-                            Hi, {{ auth()->user()->name }}
-                        </a>
-                    @else
-                        <span>Hi, {{ auth()->user()->name }}</span>
                     @endif
+
+                    <div class="leading-tight">
+                        <p>Hi, {{ auth()->user()->name }}</p>
+                        @if ($myAuthor)
+                            <p class="text-xs">
+                                <a href="{{ route('authors.show', $myAuthor) }}" class="underline">Check profile</a>
+                            </p>
+                        @endif
+                    </div>
 
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
